@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/playing_menu.gd" type="Script" id=2]
+
+[node name="playing_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="score" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+text = "Score: 000"
+
+[node name="high_score" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -310.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 20.0
+theme = ExtResource( 1 )
+text = "High Score: 000"

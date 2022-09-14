@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/enemy_one.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://prefabs/playing_menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://prefabs/lose_menu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefabs/pause_menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefabs/enemy_two.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefabs/enemy_three.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/251461__joshuaempyre__arcade-music-loop.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/music.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 58.5, 369.5 )
@@ -17,7 +21,7 @@ extents = Vector2( 10, 49 )
 
 [node name="main" type="Node"]
 script = ExtResource( 1 )
-enemies = [ ExtResource( 2 ) ]
+enemies = [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [node name="bg" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -36,7 +40,8 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 show_collision = true
 collision_use_kinematic = true
-collision_mask = 3
+collision_layer = 9
+collision_mask = 11
 format = 1
 tile_data = PoolIntArray( 1966084, 4, 0, 1966106, 4, 0, 1966129, 4, 0, 1966158, 4, 0, 2031616, 20, 0, 2031617, 8, 0, 2031618, 8, 0, 2031619, 8, 0, 2031620, 8, 0, 2031621, 8, 0, 2031622, 8, 0, 2031623, 29, 0, 2031624, 30, 0, 2031625, 8, 0, 2031626, 8, 0, 2031627, 8, 0, 2031628, 8, 0, 2031629, 8, 0, 2031630, 8, 0, 2031631, 8, 0, 2031632, 14, 0, 2031633, 8, 0, 2031634, 8, 0, 2031635, 8, 0, 2031636, 8, 0, 2031637, 8, 0, 2031638, 8, 0, 2031639, 8, 0, 2031640, 29, 0, 2031641, 8, 0, 2031642, 8, 0, 2031643, 8, 0, 2031644, 8, 0, 2031645, 8, 0, 2031646, 8, 0, 2031647, 8, 0, 2031648, 8, 0, 2031649, 30, 0, 2031650, 8, 0, 2031651, 8, 0, 2031652, 8, 0, 2031653, 8, 0, 2031654, 14, 0, 2031655, 8, 0, 2031656, 8, 0, 2031657, 8, 0, 2031658, 8, 0, 2031659, 8, 0, 2031660, 8, 0, 2031661, 30, 0, 2031662, 8, 0, 2031663, 8, 0, 2031664, 8, 0, 2031665, 8, 0, 2031666, 8, 0, 2031667, 8, 0, 2031668, 8, 0, 2031669, 8, 0, 2031670, 8, 0, 2031671, 29, 0, 2031672, 8, 0, 2031673, 8, 0, 2031674, 8, 0, 2031675, 8, 0, 2031676, 8, 0, 2031677, 8, 0, 2031678, 8, 0, 2031679, 8, 0, 2031680, 8, 0, 2031681, 8, 0, 2031682, 8, 0, 2031683, 8, 0, 2031684, 8, 0, 2031685, 8, 0, 2031686, 30, 0, 2031687, 8, 0, 2031688, 8, 0, 2031689, 8, 0, 2031690, 8, 0, 2031691, 8, 0, 2031692, 8, 0, 2031693, 14, 0, 2031694, 8, 0, 2031695, 19, 0 )
 
@@ -71,6 +76,12 @@ shape = SubResource( 2 )
 [node name="lose_menu" parent="." instance=ExtResource( 7 )]
 
 [node name="pause_menu" parent="." instance=ExtResource( 8 )]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 11 )
+autoplay = true
+script = ExtResource( 12 )
 
 [connection signal="body_entered" from="garbage_collection" to="." method="_on_garbage_collection_body_entered"]
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

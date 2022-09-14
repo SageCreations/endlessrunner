@@ -45,3 +45,7 @@ func get_pause_status(): return pause
 func set_pause_status(var x : bool): 
 	pause = x
 	if (x == false): set_has_state_started(false)
+
+var volume : float = 0.0
+func get_volume(): return volume
+func set_volume(var x : float): volume = x 

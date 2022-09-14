@@ -19,3 +19,7 @@ func _ready():
 func _on_resume_button_pressed():
 	main_data.set_game_state(main_data.game_state.playing)
 	get_tree().paused = !get_tree().paused
+
+
+func _on_HSlider_value_changed(value):
+	main_data.set_volume(value)

@@ -25,7 +25,7 @@ func _physics_process(delta):
 		y_vel = 1
 		if(Input.is_action_just_pressed("jump")):
 			y_vel = -jump_force
-			$jump_sound.play()
+			$jump.play()
 	else:
 		$AnimatedSprite.play("in_air")
 	

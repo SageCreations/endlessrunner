@@ -58,13 +58,7 @@ func _process(delta):
 
 
 
-# TODO: have global multiplier for increasing diffulculty
 
-
-# TODO: create a timer system for the spawning
-
-
-# TODO: randomly spawn the objects from the corresponding array name
 func spawn_enemies():
 	randomize()
 	var i = rng.randi_range(0, enemies.size()-1)
